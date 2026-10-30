@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Calendar button preview</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 40px 16px; background: #fafafa; color: #111827; }
+    main { max-width: 560px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Preview: add <code>?event=&lt;slug&gt;</code> to this URL.</p>
+    <div id="preview"></div>
+  </main>
+  <script type="module">
+    const slug = new URLSearchParams(location.search).get('event');
+    if (slug) {
+      const container = document.createElement('div');
+      container.dataset.calendarButton = slug;
+      document.getElementById('preview').append(container);
+      await import('./button.js');
+    }
+  </script>
+</body>
+</html>
