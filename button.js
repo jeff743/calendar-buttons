@@ -66,13 +66,16 @@ function render(container, event) {
     menu.append(link);
   }
 
-  // Unbounce stacks each element in its own z-index layer, so lift the HTML box while open
-  // or the menu slides under whatever element sits below it
-  const unbounceBox = container.closest('.lp-pom-html');
+  // Unbounce's Custom HTML box (.lp-code) is overflow:hidden at its drawn height and sits in its own
+  // z-index layer, so while open the menu is cut off at the box edge or slides under the next element
+  const unbounceBox = container.closest('.lp-code, .lp-pom-html');
   const setOpen = (open) => {
     menu.hidden = !open;
     button.setAttribute('aria-expanded', String(open));
-    if (unbounceBox) unbounceBox.style.zIndex = open ? '9999' : '';
+    if (unbounceBox) {
+      unbounceBox.style.zIndex = open ? '9999' : '';
+      unbounceBox.style.overflow = open ? 'visible' : '';
+    }
   };
   button.addEventListener('click', (clickEvent) => {
     clickEvent.stopPropagation();
