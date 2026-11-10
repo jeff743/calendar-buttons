@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//calendar-buttons//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wq-masterclass-clicks@calendar-buttons
+SEQUENCE:0
+DTSTAMP:20261110T210759Z
+DTSTART:20261118T170000Z
+DTEND:20261118T181500Z
+SUMMARY:[Warriors & Queens Masterclass] The 3 Phases Every Man Moves Throug
+ h Before He Leaves
+DESCRIPTION:Learn the sign for each phase\, what his silence actually means
+ \, and one thing to say to him before bed that he'll actually hear.
+LOCATION:Online. Your Zoom link is in your confirmation email
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
