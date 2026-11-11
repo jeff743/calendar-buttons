@@ -15,10 +15,11 @@
   },
   "button": {
     "text": "YES, ADD IT TO MY CALENDAR",
-    "color": "#3B82F6",
+    "color": "#CBB180",
+    "textColor": "#292825",
     "style": "solid",
     "size": "md"
   },
-  "sequence": 1,
-  "updatedAt": "2026-11-10T21:09:16.959Z"
+  "sequence": 2,
+  "updatedAt": "2026-11-11T20:04:35.595Z"
 }
