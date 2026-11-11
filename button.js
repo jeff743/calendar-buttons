@@ -15,10 +15,10 @@ const SIZES = {
 const CALENDAR_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>';
 const CHEVRON_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
 
-function buttonStyle({ color = '#3B82F6', style = 'solid', size = 'md' }) {
+function buttonStyle({ color = '#3B82F6', textColor = '#ffffff', style = 'solid', size = 'md' }) {
   const colors = style === 'outline'
     ? `background: transparent; border: 2px solid ${color}; color: ${color};`
-    : `background: ${color}; border: 2px solid ${color}; color: #ffffff;`;
+    : `background: ${color}; border: 2px solid ${color}; color: ${textColor};`;
   return `display: inline-flex; align-items: center; gap: 8px; ${SIZES[size] ?? SIZES.md} ${colors}`
     + ' border-radius: 8px; font-family: inherit; font-weight: 600; line-height: 1.2; cursor: pointer;';
 }
@@ -44,7 +44,8 @@ function render(container, event) {
   button.setAttribute('aria-expanded', 'false');
   button.style.cssText = buttonStyle(event.button ?? {});
   const label = document.createElement('span');
-  label.textContent = event.button?.text || 'Add to Calendar';
+  // Jeff's no-orphan rule: the last two words wrap together, so one word never sits alone on a phone
+  label.textContent = (event.button?.text || 'Add to Calendar').trim().replace(/ (\S+)$/, ' $1');
   button.insertAdjacentHTML('afterbegin', CALENDAR_ICON);
   button.append(label);
   button.insertAdjacentHTML('beforeend', CHEVRON_ICON);
